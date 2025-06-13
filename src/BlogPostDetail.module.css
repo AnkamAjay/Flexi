@@ -1,0 +1,95 @@
+/*
+  BlogPostDetail.module.css
+  Styles for the BlogPostDetail component, responsive for desktop, tablet, and mobile.
+*/
+
+.blogPostDetail {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1.5px 3px rgba(0,0,0,0.03);
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 40px;
+  font-family: 'Arial', 'Roboto', sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.author {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 16px;
+  color: #999999;
+  margin-bottom: 30px;
+}
+
+.content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.content a {
+  color: #007BFF;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.content a:hover, .content a:focus {
+  color: #0056b3;
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {
+  .blogPostDetail {
+    padding: 32px;
+    max-width: 700px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .author {
+    font-size: 16px;
+  }
+  .date {
+    font-size: 14px;
+  }
+  .content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogPostDetail {
+    padding: 20px;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  .title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  .author {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .date {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .content {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}

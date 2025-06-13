@@ -1,0 +1,123 @@
+/*
+  BlogPostForm.module.css
+  Styles for the BlogPostForm component, responsive for desktop and mobile.
+*/
+
+.blogPostForm {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1.5px 3px rgba(0,0,0,0.03);
+  padding: 40px;
+  font-family: 'Arial', 'Roboto', sans-serif;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  flex: 0 0 160px;
+  text-align: right;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333333;
+}
+
+.input,
+.textarea,
+.date {
+  flex: 1;
+  font-size: 16px;
+  color: #333333;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  padding: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+
+.input:focus,
+.textarea:focus,
+.date:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.15);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error {
+  color: #FF0000;
+  font-size: 14px;
+  margin-top: 6px;
+  margin-left: 170px;
+  text-align: left;
+}
+
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  background: #007BFF;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submitBtn:disabled {
+  background: #b3d4fc;
+  cursor: not-allowed;
+}
+
+.submitBtn:focus {
+  outline: 2px solid #0056b3;
+}
+
+@media (max-width: 768px) {
+  .blogPostForm {
+    padding: 20px;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  .formGroup {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 15px;
+  }
+  .label {
+    text-align: left;
+    margin-bottom: 5px;
+    margin-right: 0;
+    font-size: 14px;
+  }
+  .input,
+  .textarea,
+  .date {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .error {
+    font-size: 12px;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  .submitBtn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
