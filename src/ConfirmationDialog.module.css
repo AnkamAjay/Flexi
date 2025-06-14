@@ -1,0 +1,96 @@
+/* ConfirmationDialog.module.css */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  max-width: 400px;
+  width: 90%;
+  padding: 32px 24px 24px 24px;
+  font-family: Arial, Roboto, sans-serif;
+  outline: none;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+.description {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 30px;
+}
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+.cancelBtn {
+  background: #CCCCCC;
+  color: #222;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-family: Arial, Roboto, sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  transition: background 0.2s;
+}
+.cancelBtn:focus {
+  outline: 2px solid #007BFF;
+}
+.deleteBtn {
+  background: #FF0000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-family: Arial, Roboto, sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  transition: background 0.2s;
+}
+.deleteBtn:focus {
+  outline: 2px solid #007BFF;
+}
+.deleteBtn:disabled {
+  background: #ffb3b3;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .dialog {
+    width: 90vw;
+    padding: 20px 10px 16px 10px;
+  }
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .cancelBtn, .deleteBtn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+  }
+}
