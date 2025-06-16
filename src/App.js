@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate, useParams, Link } from 'react-router-dom';
 import BlogPostList from './BlogPostList';
 import BlogPostDetail from './BlogPostDetail';
 import BlogPostForm from './BlogPostForm';
+import DeleteButton from './DeleteButton';
+import ConfirmationDialog from './ConfirmationDialog';
 
 const initialPosts = [
   {
@@ -33,6 +35,8 @@ const initialPosts = [
 
 function App() {
   const [posts, setPosts] = useState(initialPosts);
+  const [deleteId, setDeleteId] = useState(null);
+  const [deleting, setDeleting] = useState(false);
   const navigate = useNavigate();
 
   // Create a new post
@@ -53,6 +57,17 @@ function App() {
     navigate(`/posts/${id}`);
   };
 
+  // Delete a post
+  const handleDelete = async (id) => {
+    setDeleting(true);
+    setTimeout(() => { // Simulate async
+      setPosts(prev => prev.filter(post => post.id !== id));
+      setDeleting(false);
+      setDeleteId(null);
+      navigate('/');
+    }, 700);
+  };
+
   // Find a post by id
   const findPost = (id) => posts.find(post => post.id === id);
 
@@ -66,21 +81,28 @@ function App() {
         <Route path="/" element={<BlogPostList posts={posts.map(p => ({ ...p, url: `/posts/${p.id}` }))} />} />
         <Route path="/posts/new" element={<BlogPostForm onSubmit={handleCreate} />} />
         <Route path="/posts/:id/edit" element={<EditWrapper findPost={findPost} onUpdate={handleUpdate} />} />
-        <Route path="/posts/:id" element={<DetailWrapper findPost={findPost} />} />
+        <Route path="/posts/:id" element={<DetailWrapper findPost={findPost} onDelete={setDeleteId} />} />
       </Routes>
+      <ConfirmationDialog
+        isOpen={!!deleteId}
+        onClose={() => setDeleteId(null)}
+        onConfirm={() => handleDelete(deleteId)}
+        loading={deleting}
+      />
     </div>
   );
 }
 
-function DetailWrapper({ findPost }) {
+function DetailWrapper({ findPost, onDelete }) {
   const { id } = useParams();
   const post = findPost(id);
   if (!post) return <p>Blog post not found.</p>;
   return (
     <div>
       <BlogPostDetail {...post} />
-      <div style={{maxWidth:800,margin:'0 auto',padding:'0 40px 40px'}}>
+      <div style={{maxWidth:800,margin:'0 auto',padding:'0 40px 40px',display:'flex',gap:16}}>
         <Link to={`/posts/${id}/edit`} style={{background:'#007BFF',color:'#fff',padding:'8px 18px',borderRadius:4,textDecoration:'none',fontWeight:'bold'}}>Edit Post</Link>
+        <DeleteButton onClick={() => onDelete(id)} />
       </div>
     </div>
   );
