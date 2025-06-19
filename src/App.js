@@ -5,6 +5,7 @@ import BlogPostDetail from './BlogPostDetail';
 import BlogPostForm from './BlogPostForm';
 import DeleteButton from './DeleteButton';
 import ConfirmationDialog from './ConfirmationDialog';
+import Layout from './Layout';
 
 const initialPosts = [
   {
@@ -72,7 +73,7 @@ function App() {
   const findPost = (id) => posts.find(post => post.id === id);
 
   return (
-    <div>
+    <Layout>
       <header style={{display:'flex',justifyContent:'space-between',alignItems:'center',maxWidth:800,margin:'40px auto 0',padding:'0 40px'}}>
         <h1 style={{margin:0}}>Blog Posts</h1>
         <Link to="/posts/new" style={{background:'#007BFF',color:'#fff',padding:'10px 20px',borderRadius:4,textDecoration:'none',fontWeight:'bold'}}>New Post</Link>
@@ -89,7 +90,7 @@ function App() {
         onConfirm={() => handleDelete(deleteId)}
         loading={deleting}
       />
-    </div>
+    </Layout>
   );
 }
 
