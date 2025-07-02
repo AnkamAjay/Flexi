@@ -1,0 +1,11 @@
+.commentList {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.empty {
+  color: #888;
+  font-size: 1em;
+  text-align: center;
+  margin: 16px 0;
+  font-family: 'Roboto', Arial, sans-serif;
+}

@@ -102,7 +102,7 @@ function DetailWrapper({ findPost, onDelete }) {
     <div>
       <BlogPostDetail {...post} />
       <div style={{maxWidth:800,margin:'0 auto',padding:'0 40px 40px',display:'flex',gap:16}}>
-        <Link to={`/posts/${id}/edit`} style={{background:'#007BFF',color:'#fff',padding:'8px 18px',borderRadius:4,textDecoration:'none',fontWeight:'bold'}}>Edit Post</Link>
+        <Link to={`/posts/${id}/edit`} style={{background:'#007BFF',color:'#fff',padding:'8px 18px',borderRadius:4,textDecoration:'none',fontWeight:'bold'}} replace>Edit Post</Link>
         <DeleteButton onClick={() => onDelete(id)} />
       </div>
     </div>
