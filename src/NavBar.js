@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
+import SearchBar from './SearchBar';
 
-const NavBar = () => {
+const NavBar = ({ onSearch }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -38,9 +39,12 @@ const NavBar = () => {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.logo} tabIndex={0} aria-label="Go to home page">Blog Application</Link>
-      <div className={styles.links}>
+      <div className={styles.searchBarWrapper}>
+        <SearchBar onSearch={onSearch} />
+      </div>
+      <div className={styles.rightLinks}>
         <Link to="/" tabIndex={0}>Home</Link>
-        <Link to="/blog" tabIndex={0}>Blog</Link>
+        <Link to="/posts/new" tabIndex={0}>New Post</Link>
       </div>
       <button
         ref={hamburgerRef}
@@ -61,7 +65,7 @@ const NavBar = () => {
         aria-hidden={!isMobileMenuOpen}
       >
         <Link to="/" onClick={handleLinkClick} tabIndex={isMobileMenuOpen ? 0 : -1}>Home</Link>
-        <Link to="/blog" onClick={handleLinkClick} tabIndex={isMobileMenuOpen ? 0 : -1}>Blog</Link>
+        <Link to="/posts/new" onClick={handleLinkClick} tabIndex={isMobileMenuOpen ? 0 : -1}>New Post</Link>
       </div>
     </nav>
   );

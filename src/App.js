@@ -6,6 +6,7 @@ import BlogPostForm from './BlogPostForm';
 import DeleteButton from './DeleteButton';
 import ConfirmationDialog from './ConfirmationDialog';
 import Layout from './Layout';
+import NavBar from './NavBar';
 
 const initialPosts = [
   {
@@ -38,6 +39,7 @@ function App() {
   const [posts, setPosts] = useState(initialPosts);
   const [deleteId, setDeleteId] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   // Create a new post
@@ -72,14 +74,23 @@ function App() {
   // Find a post by id
   const findPost = (id) => posts.find(post => post.id === id);
 
+  // Filter posts by search query
+  const filteredPosts = searchQuery
+    ? posts.filter(post =>
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.content.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : posts;
+
   return (
     <Layout>
+      <NavBar onSearch={setSearchQuery} />
       <header style={{display:'flex',justifyContent:'space-between',alignItems:'center',maxWidth:800,margin:'40px auto 0',padding:'0 40px'}}>
         <h1 style={{margin:0}}>Blog Posts</h1>
         <Link to="/posts/new" style={{background:'#007BFF',color:'#fff',padding:'10px 20px',borderRadius:4,textDecoration:'none',fontWeight:'bold'}}>New Post</Link>
       </header>
       <Routes>
-        <Route path="/" element={<BlogPostList posts={posts.map(p => ({ ...p, url: `/posts/${p.id}` }))} />} />
+        <Route path="/" element={<BlogPostList posts={filteredPosts.map(p => ({ ...p, url: `/posts/${p.id}` }))} />} />
         <Route path="/posts/new" element={<BlogPostForm onSubmit={handleCreate} />} />
         <Route path="/posts/:id/edit" element={<EditWrapper findPost={findPost} onUpdate={handleUpdate} />} />
         <Route path="/posts/:id" element={<DetailWrapper findPost={findPost} onDelete={setDeleteId} />} />
