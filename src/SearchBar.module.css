@@ -1,0 +1,69 @@
+.searchForm {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+.input {
+  width: 220px;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid #b0b0b0;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: width 0.3s;
+}
+.input:focus {
+  outline: 2px solid #1976d2;
+  border-color: #1976d2;
+}
+.iconButton {
+  background: none;
+  border: none;
+  color: #003366;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 4px 8px;
+  outline: none;
+}
+.iconButton:focus {
+  outline: 2px solid #1976d2;
+}
+.icon {
+  pointer-events: none;
+}
+.cancelButton {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-size: 1em;
+  margin-left: 8px;
+  cursor: pointer;
+  outline: none;
+}
+.cancelButton:focus {
+  outline: 2px solid #1976d2;
+}
+.srOnly {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .input {
+    width: 100vw;
+    max-width: 100vw;
+    font-size: 1em;
+    padding: 8px 36px 8px 12px;
+  }
+  .searchForm {
+    width: 100vw;
+    padding: 0 8px;
+    background: #fff;
+    z-index: 1001;
+  }
+}

@@ -6,6 +6,9 @@ const BlogPostList = ({ posts }) => {
   if (!posts || posts.length === 0) {
     return <p className={styles.empty}>No blog posts available.</p>;
   }
+  if (posts.length === 0) {
+    return <p className={styles.empty}>No posts found.</p>;
+  }
 
   return (
     <div className={styles.blogPostList}>
